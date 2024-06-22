@@ -22,7 +22,6 @@ public class Car {
     private String type;
     private String transmission;
     private String color;
-    private Date year;
     private Boolean sold;
     @Lob
     private String description;
@@ -45,7 +44,6 @@ public class Car {
         carDTO.setType(type);
         carDTO.setTransmission(transmission);
         carDTO.setColor(color);
-        carDTO.setYear(year);
         carDTO.setSold(sold);
         carDTO.setDescription(description);
         carDTO.setPrice(price);

@@ -28,18 +28,33 @@ public class WebSecurityConfiguration {
     private final UserService userService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+//        httpSecurity.csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/**").permitAll()
+//                        .requestMatchers("/api/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
+//                        .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
+//                        .anyRequest().authenticated())
+//                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .authenticationProvider(authenticationProvider())
+//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//        return httpSecurity.build();
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
-                        .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/customer/**").permitAll()
+                        .requestMatchers("/api/admin/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
