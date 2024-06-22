@@ -33,6 +33,7 @@ public class CustomerServiceImpl implements CustomerService{
             car.setPrice(carDTO.getPrice());
             car.setDescription(carDTO.getDescription());
             car.setColor(carDTO.getColor());
+            car.setYear(carDTO.getYear());
             car.setSold(false);
             car.setImage(carDTO.getImage().getBytes());
             car.setUser(optionalUser.get());
@@ -68,6 +69,7 @@ public class CustomerServiceImpl implements CustomerService{
             car.setPrice(carDTO.getPrice());
             car.setDescription(carDTO.getDescription());
             car.setColor(carDTO.getColor());
+            car.setYear(carDTO.getYear());
             car.setColor(carDTO.getColor());
             if (carDTO.getImage() != null)
                 car.setImage(carDTO.getImage().getBytes());

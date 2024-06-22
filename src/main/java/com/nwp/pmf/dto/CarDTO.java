@@ -12,6 +12,7 @@ public class CarDTO {
     private String type;
     private String transmission;
     private String color;
+    private Integer year;
     private Boolean sold;
     private String description;
     private Long price;
